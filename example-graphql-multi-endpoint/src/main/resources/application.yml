@@ -1,11 +1,11 @@
 graphql:
   tools:
-    schemaLocationPattern: graphql/client.graphqls
+    schemaLocationPattern: graphql/default.graphqls,graphql/share/*.graphqls
   servlet:
     mapping: /graphql
     enabled: true
     corsEnabled: true
   multiEndpoints:
       client:
-        schemaLocationPattern: '**/*.graphqls'
+        schemaLocationPattern: graphql/client.graphqls,graphql/share/*.graphqls
         endpoint: /client

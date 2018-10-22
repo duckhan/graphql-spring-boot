@@ -1,6 +1,3 @@
-schema{
-query: Query
-}
-type Query{
-    version: String
+extend type Query{
+    isClient: Boolean
 }
