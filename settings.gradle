@@ -34,4 +34,4 @@ include ':example-graphql-tools'
 include ':example-graphql-subscription'
 include ':graphql-spring-boot-test'
 include ':graphql-spring-boot-test-autoconfigure'
-
+include ':example-graphql-multi-endpoint'

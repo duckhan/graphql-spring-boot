@@ -54,6 +54,12 @@
       "name": "graphql.tools.introspectionEnabled",
       "defaultValue": true,
       "type": "java.lang.Boolean"
+    },
+    {
+      "name": "graphql.multi",
+      "defaultValue": null,
+      "type": "java.util.Map<java.lang.String,com.oembedler.moon.graphql.boot.GraphQLEndpointProperties>",
+      "sourceType": "com.oembedler.moon.graphql.boot.GraphQLMultiEndpointProperties"
     }
   ]
 }

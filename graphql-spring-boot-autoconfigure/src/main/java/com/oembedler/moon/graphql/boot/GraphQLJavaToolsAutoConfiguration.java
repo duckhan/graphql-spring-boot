@@ -15,6 +15,7 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.autoconfigure.jackson.JacksonAutoConfiguration;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -39,6 +40,10 @@ public class GraphQLJavaToolsAutoConfiguration {
 
     @Autowired(required = false)
     private SchemaParserOptions options;
+    @Value("${graphql.tools.schemaLocationPattern:**/*.graphqls}")
+    private String schemaLocationPattern;
+    @Autowired
+    ApplicationContext applicationContext;
 
     @Value("${graphql.tools.introspectionEnabled:true}")
     private boolean introspectionEnabled;
@@ -46,7 +51,7 @@ public class GraphQLJavaToolsAutoConfiguration {
     @Bean
     @ConditionalOnMissingBean
     public SchemaStringProvider schemaStringProvider() {
-        return new ClasspathResourceSchemaStringProvider();
+        return new ClasspathResourceSchemaStringProvider(applicationContext, schemaLocationPattern);
     }
 
     @Bean
